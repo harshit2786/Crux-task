@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// src/App.tsx
+import React, {useState} from 'react';
+import Sidebar from './components/sidebar';
+import Navbar from './components/navbar';
+import SimpleCharts from './components/graph';
+import { Widget } from './models/widgets';
 
-function App() {
+const App: React.FC = () => {
+
+  const data : Widget[] = [{"color": "black", "title":"","widget":"bar"}];
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex bg-[#F4F4FF]">
+      <div className='w-20'>
+      <Sidebar />
+      </div>
+      <div className='w-full'>
+        <Navbar />
+        <div className='flex flex-wrap justify-start mx-10'>
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+          <SimpleCharts color={data[0].color} widget={data[0].widget} title={data[0].title} />
+        </div>
+        
+      </div>
     </div>
   );
-}
+};
 
 export default App;

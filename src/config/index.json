@@ -1,7 +1,7 @@
 {
     "datasets": [
       {
-        "name": "Dataset 1",
+        "name": "Q-1",
         "data": [
           ["A", 25],
           ["B", 40],
@@ -11,16 +11,16 @@
         "summary": "Based on the provided data, the most effective hour of the day to send an email across all stores for all time, with the highest engagement after opening, is at 15:00(3 PM), with a total of 5041 emails opened. The next best hours are 16:00 (4 PM) and 17:00 (5 PM) with 5007 and 4785 emails opened respectively. There is a noticeable drop in"
       },
       {
-        "name": "Dataset 2",
+        "name": "Q-2",
         "data": [
-          ["X", 30],
-          ["Y", 45],
-          ["Z", 20],
-          ["W", 10]
+          ["P", 30],
+          ["Q", 45],
+          ["R", 20],
+          ["S", 10]
         ],"summary": "Based on the provided data, the most effective hour of the day to send an email across all stores for all time, with the highest engagement after opening, is at 15:00(3 PM), with a total of 5041 emails opened. The next best hours are 16:00 (4 PM) and 17:00 (5 PM) with 5007 and 4785 emails opened respectively. There is a noticeable drop in"
       },
       {
-        "name": "Dataset 3",
+        "name": "Q-3",
         "data": [
           ["X", 25],
           ["Y", 40],

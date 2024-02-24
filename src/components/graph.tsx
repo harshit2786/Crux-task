@@ -32,11 +32,9 @@ export default function SimpleCharts({color,widget} : Widget) {
 
             
   return (
-    <div className={`${color==='purple' ? "bg-[#5E5ADB]" : color==='black' ? "bg-[#282828]" : 'bg-[#CECECE]'} relative w-48 rounded-2xl h-48 px-5 m-5`}>
+    <div className={`${color==='purple' ? "bg-[#5E5ADB]" : color==='black' ? "bg-[#282828]" : 'bg-[#CECECE]'} shadow-lg relative w-48 rounded-2xl h-48 px-5 m-5`}>
         <div className='flex justify-between w-full'>
-            <p onClick={() => switchDataset(0)} className={`${selectedDataset === config.datasets[0] ? "text-white underline" : ""} mt-3 cursor-pointer`}>D1</p>
-            <p onClick={() => switchDataset(1)} className={`${selectedDataset === config.datasets[1] ? "text-white underline" : ""} mt-3 cursor-pointer`}>D2</p>
-            <p onClick={() => switchDataset(2)} className={`${selectedDataset === config.datasets[2] ? "text-white underline" : ""} mt-3 cursor-pointer`}>D3</p>
+            {config.datasets.map((obj,index) =>( <p onClick={() => switchDataset(index)} className={`${selectedDataset === config.datasets[index] ? "text-white underline" : ""} mt-3 cursor-pointer`}>{obj.name}</p>))}
             <p className='text-white mt-2 cursor-pointer'>. . .</p>
         </div>
         {widget === "bar" &&  <BarChart

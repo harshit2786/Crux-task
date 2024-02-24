@@ -9,7 +9,7 @@ import sb5 from '../imgs/sbicon5.png';
 
 const Sidebar: React.FC = () => {
   return (
-    <div className="bg-white left-0 border fixed z-50 text-white h-screen flex flex-col">
+    <div className="bg-white left-0 border fixed z-20 text-white h-screen flex flex-col">
       <div className="p-4 text-2xl font-bold cursor-pointer"><img className='w-12' src={logo} alt=""/></div>
       <nav className="flex-1">
         <ul>

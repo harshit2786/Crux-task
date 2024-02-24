@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Modal from 'react-modal';
 import nb1 from '../imgs/nbicon1.png';
 import nb2 from '../imgs/nbicon2.png';
@@ -11,8 +11,14 @@ import { Widget } from '../models/widgets';
 
 
 const Navbar: React.FC = () => {
+  const [data, setData] = useState<Widget[]>([]);
+
+useEffect(() => {
+  setData([...data, { color: 'purple', title: '', widget: 'pie' }]);
+}, []); // The empty dependency array ensures it only runs once when the component mounts
+
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [widgetData, setWidgetData] = useState<Widget>({title: '', color:'white',widget:'data'});
+  const [widgetData, setWidgetData] = useState<Widget>({color:'purple',title: '' ,widget:'pie'});
   
   const openModal = () => {
     setIsModalOpen(true);
@@ -22,10 +28,14 @@ const Navbar: React.FC = () => {
     setIsModalOpen(false);
   };
 
-
+  const saveData = () => {
+    setData([...data, widgetData]);
+    console.log(data);
+    setIsModalOpen(false);
+  };
 
   return (
-    <><div className="bg-white border fixed z-40 top-0 w-full p-2 h-16 flex justify-between">
+    <><div className="bg-white border fixed z-10 top-0 w-full p-2 h-16 flex justify-between">
       <div className='flex items-center'>
         <img className='cursor-pointer h-6 m-4' src={nb2} alt="" />
         
@@ -84,11 +94,11 @@ const Navbar: React.FC = () => {
                     </div>
                     <div className='w-[40%] m-3 flex flex-col'>
                         <h1 className='text-[#2B2B2B] text-xl'> Components</h1>
-                        <div onClick={(e)=> setWidgetData({ ...widgetData, widget: 'data' })} className='rounded-lg border m-2 h-24 flex flex-col cursor-pointer'>
+                        <div onClick={(e)=> setWidgetData({ ...widgetData, widget: 'data' })} className={`rounded-lg hover:bg-[#E0DFF8] border m-2 h-24 flex flex-col cursor-pointer`}>
                             <h2 className=' m-2 text-2xl'>Data</h2>
                             <p className='m-2'>Random Description</p>
                         </div>
-                        <div className='border rounded-lg h-36 flex flex-col m-2'>
+                        <div className='border hover:bg-[#E0DFF8] rounded-lg h-36 flex flex-col m-2'>
                             <h2 className='text-2xl m-2'>Graph</h2>
                             <p className='ml-3'>Random Description</p>
                             <div className='ml-2 mt-1 flex'>
@@ -97,13 +107,13 @@ const Navbar: React.FC = () => {
                                 <img onClick={(e)=> setWidgetData({ ...widgetData, widget: 'line' })} className='w-16 cursor-pointer' src={line} alt="" />
                             </div>
                         </div>
-                        <div onClick={(e)=> setWidgetData({ ...widgetData, widget: 'summary' })} className='rounded-lg m-2 border cursor-pointer h-24 flex flex-col'>
+                        <div onClick={(e)=> setWidgetData({ ...widgetData, widget: 'summary' })} className='hover:bg-[#E0DFF8] rounded-lg m-2 border cursor-pointer h-24 flex flex-col'>
                             <h2 className='text-2xl ml-2'>Summary</h2>
                             <p className='m-2'>Random Description</p>
                         </div>
                         <div className='flex m-1 mt-2 justify-end'>
-                            <button type="button" onClick={closeModal} className='rounded-lg p-2 mr-10 w-20 border border-[#9F9F9F] text-[#9F9F9F]'>Cancel</button>
-                            <button className='rounded-lg p-2 w-20 bg-[#5E5ADB] text-white'>Save</button>
+                            <button type="button" onClick={closeModal} className='hover:bg-[#E0DFF8] rounded-lg p-2 mr-10 w-20 border border-[#9F9F9F] text-[#9F9F9F]'>Cancel</button>
+                            <button onClick={(e)=>saveData()} className='rounded-lg p-2 w-20 bg-[#5E5ADB] text-white'>Save</button>
                         </div>
                     </div>
                 </div>
@@ -111,9 +121,10 @@ const Navbar: React.FC = () => {
         </form>
       </Modal>
     </div>
-    {/* {widget.map((wid, index) => (
-          <div key={index}><SimpleCharts color={wid.color} widget={wid.widget} title={wid.title} /></div>
-        ))} */}
+    
+    {data.length>0 && <div className='flex mt-20 flex-wrap justify-start mx-10'>
+          {data.map((wid,key) => (<div key={key}><SimpleCharts color={wid.color} widget={wid.widget} title={wid.title} /></div>))}
+        </div>}
     </>
   );
 };
